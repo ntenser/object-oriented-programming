@@ -14,15 +14,15 @@ class Paperboy
     end
 
     def deliver(start_address, end_address)
-    deliveries = end_address - start_address + 1
-    @experience += deliver
     q = quota
+    deliveries = end_address - start_address + 1
+    @experience += deliveries
 
-    if deliver >= 50
-      @earnings = (q * 0.25) + [(deliver - q) * 0.50]
+
+    if deliveries >= q
+      @earnings = (deliveries * 0.25) + (deliveries - q) * 0.50
     else
-      @earnings = [(deliver * 0.25) - 2 ]
-
+      @earnings = (deliveries * 0.25) - 2
       end
     end
 
